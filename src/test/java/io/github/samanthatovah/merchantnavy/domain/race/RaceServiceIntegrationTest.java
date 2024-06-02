@@ -1,4 +1,4 @@
-package io.github.samanthatovah.merchantnavy.domain.game;
+package io.github.samanthatovah.merchantnavy.domain.race;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -9,15 +9,16 @@ import org.springframework.test.context.ActiveProfiles;
 @Log4j2
 @SpringBootTest
 @ActiveProfiles("test")
-class GameServiceIntegrationTest {
+class RaceServiceIntegrationTest {
 
 	@Autowired
-	private GameService gameService;
+	private RaceService raceService;
 
 	@Test
-	void getGame() {
-		Game game = gameService.getGame();
+	void getPlayerRace() {
+		Race playerRace = raceService.getPlayerRace();
 
-		log.info(game);
+		log.info("player race: {}", playerRace);
 	}
+
 }

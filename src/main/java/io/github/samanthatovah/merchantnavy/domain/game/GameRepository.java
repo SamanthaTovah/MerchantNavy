@@ -9,12 +9,12 @@ import java.util.List;
 @Service
 public class GameRepository extends Repository<Game> {
 
-	public GameRepository(DatabaseService databaseService, GameParser gameParser) {
-		super(databaseService, gameParser);
+	public GameRepository(DatabaseService databaseService, GameParser parser) {
+		super(databaseService, parser);
 	}
 
 	public List<Game> getAll() {
 		String query = "SELECT * FROM FCT_Game;";
-		return getAll(query);
+		return getAllFromQuery(query);
 	}
 }

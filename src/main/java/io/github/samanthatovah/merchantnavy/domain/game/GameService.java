@@ -11,10 +11,10 @@ import java.util.List;
 @Service
 public class GameService {
 
-	private final GameRepository gameRepository;
+	private final GameRepository repository;
 
 	public Game getGame() {
-		List<Game> games = gameRepository.getAll();
+		List<Game> games = repository.getAll();
 		if (games.size() != 1) {
 			throw new IllegalStateException("Cannot handle " + games.size() + " games, must be 1");
 		}
