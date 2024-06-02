@@ -1,6 +1,6 @@
 package io.github.samanthatovah.merchantnavy;
 
-import io.github.samanthatovah.merchantnavy.domain.game.Game;
+import io.github.samanthatovah.merchantnavy.common.GenericRepository;
 import io.github.samanthatovah.merchantnavy.domain.game.GameService;
 import io.github.samanthatovah.merchantnavy.domain.moveaction.MoveActionService;
 import io.github.samanthatovah.merchantnavy.domain.planetaryinstallation.PlanetaryInstallationService;
@@ -28,10 +28,8 @@ public class MerchantNavyRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		setGameId();
-		Game game = gameService.getGame();
-		log.info("Game: {}", game);
-		log.info("Game ID has already been set in properties"); // TODO set GameId dynamically here
+		GenericRepository.GAME_ID = gameService.getGame().id();
+		log.info("Set GAME_ID to {}", GenericRepository.GAME_ID);
 
 		// TODO assess the game state
 
@@ -41,8 +39,5 @@ public class MerchantNavyRunner implements CommandLineRunner {
 
 		// exit
 		System.exit(0);
-	}
-
-	private void setGameId() {
 	}
 }

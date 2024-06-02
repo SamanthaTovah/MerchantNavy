@@ -1,15 +1,15 @@
 package io.github.samanthatovah.merchantnavy.domain.game;
 
-import io.github.samanthatovah.merchantnavy.common.Repository;
+import io.github.samanthatovah.merchantnavy.common.GenericRepository;
 import io.github.samanthatovah.merchantnavy.database.DatabaseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class GameRepository extends Repository<Game> {
+public class GameGenericRepository extends GenericRepository<Game> {
 
-	public GameRepository(DatabaseService databaseService, GameParser parser) {
+	public GameGenericRepository(DatabaseService databaseService, GameParser parser) {
 		super(databaseService, parser);
 	}
 

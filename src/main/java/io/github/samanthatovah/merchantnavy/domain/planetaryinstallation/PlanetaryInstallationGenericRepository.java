@@ -1,15 +1,15 @@
 package io.github.samanthatovah.merchantnavy.domain.planetaryinstallation;
 
-import io.github.samanthatovah.merchantnavy.common.Repository;
+import io.github.samanthatovah.merchantnavy.common.GenericRepository;
 import io.github.samanthatovah.merchantnavy.database.DatabaseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PlanetaryInstallationRepository extends Repository<PlanetaryInstallation> {
+public class PlanetaryInstallationGenericRepository extends GenericRepository<PlanetaryInstallation> {
 
-	public PlanetaryInstallationRepository(DatabaseService databaseService, PlanetaryInstallationParser parser) {
+	public PlanetaryInstallationGenericRepository(DatabaseService databaseService, PlanetaryInstallationParser parser) {
 		super(databaseService, parser);
 	}
 

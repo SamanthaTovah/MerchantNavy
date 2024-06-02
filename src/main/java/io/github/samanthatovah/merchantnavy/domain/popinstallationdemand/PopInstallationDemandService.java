@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PopInstallationDemandService {
 
-	private final PopInstallationDemandRepository repository;
+	private final PopInstallationDemandGenericRepository repository;
 
 	public List<PopInstallationDemand> getAll() {
 		return repository.getAll();

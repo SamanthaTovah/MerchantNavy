@@ -1,15 +1,15 @@
 package io.github.samanthatovah.merchantnavy.domain.moveaction;
 
-import io.github.samanthatovah.merchantnavy.common.Repository;
+import io.github.samanthatovah.merchantnavy.common.GenericRepository;
 import io.github.samanthatovah.merchantnavy.database.DatabaseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MoveActionRepository extends Repository<MoveAction> {
+public class MoveActionGenericRepository extends GenericRepository<MoveAction> {
 
-	public MoveActionRepository(DatabaseService databaseService, MoveActionParser parser) {
+	public MoveActionGenericRepository(DatabaseService databaseService, MoveActionParser parser) {
 		super(databaseService, parser);
 	}
 
