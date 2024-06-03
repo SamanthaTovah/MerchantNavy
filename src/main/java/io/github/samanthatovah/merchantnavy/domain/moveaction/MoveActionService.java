@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class MoveActionService {
 
-	private final MoveActionGenericRepository repository;
+	private final MoveActionRepository repository;
 
 	public List<MoveAction> getAll() {
 		return repository.getAll();

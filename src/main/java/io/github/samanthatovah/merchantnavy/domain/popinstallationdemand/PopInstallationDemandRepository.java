@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PopInstallationDemandGenericRepository extends GenericRepository<PopInstallationDemand> {
+public class PopInstallationDemandRepository extends GenericRepository<PopInstallationDemand> {
 
-	public PopInstallationDemandGenericRepository(DatabaseService databaseService, PopInstallationDemandParser parser) {
+	public PopInstallationDemandRepository(DatabaseService databaseService, PopInstallationDemandParser parser) {
 		super(databaseService, parser);
 	}
 

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PopulationGenericRepository extends GenericRepository<Population> {
+public class PopulationRepository extends GenericRepository<Population> {
 
-	public PopulationGenericRepository(DatabaseService databaseService, PopulationParser parser) {
+	public PopulationRepository(DatabaseService databaseService, PopulationParser parser) {
 		super(databaseService, parser);
 	}
 

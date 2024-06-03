@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PopulationService {
 
-	private final PopulationGenericRepository repository;
+	private final PopulationRepository repository;
 
 	public List<Population> getAll() {
 		return repository.getAll();

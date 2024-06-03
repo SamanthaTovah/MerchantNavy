@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PlanetaryInstallationGenericRepository extends GenericRepository<PlanetaryInstallation> {
+public class PlanetaryInstallationRepository extends GenericRepository<PlanetaryInstallation> {
 
-	public PlanetaryInstallationGenericRepository(DatabaseService databaseService, PlanetaryInstallationParser parser) {
+	public PlanetaryInstallationRepository(DatabaseService databaseService, PlanetaryInstallationParser parser) {
 		super(databaseService, parser);
 	}
 

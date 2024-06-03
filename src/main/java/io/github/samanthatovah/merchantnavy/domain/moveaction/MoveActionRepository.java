@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MoveActionGenericRepository extends GenericRepository<MoveAction> {
+public class MoveActionRepository extends GenericRepository<MoveAction> {
 
-	public MoveActionGenericRepository(DatabaseService databaseService, MoveActionParser parser) {
+	public MoveActionRepository(DatabaseService databaseService, MoveActionParser parser) {
 		super(databaseService, parser);
 	}
 

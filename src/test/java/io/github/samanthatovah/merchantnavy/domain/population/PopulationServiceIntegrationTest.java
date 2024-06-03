@@ -17,7 +17,7 @@ class PopulationServiceIntegrationTest {
 	private PopulationService populationService;
 
 	@Test
-	void getPopulation() {
+	void getAll() {
 		List<Population> populations = populationService.getAll();
 		for (Population population : populations) {
 			log.info("Population: {}", population);

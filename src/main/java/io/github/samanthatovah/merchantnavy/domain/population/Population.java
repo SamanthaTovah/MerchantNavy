@@ -7,7 +7,7 @@ public record Population(
 		int speciesId,
 		int systemId,
 		int systemBodyId,
-		String popName,
+		String name,
 		PopulationDestination colonistDestination,
 		float unrestPoints
 ) {

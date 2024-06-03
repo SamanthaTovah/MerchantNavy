@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class GameService {
 
-	private final GameGenericRepository repository;
+	private final GameRepository repository;
 
 	public Game getGame() {
 		List<Game> games = repository.getAll();

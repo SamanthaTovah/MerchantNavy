@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlanetaryInstallationService {
 
-	private final PlanetaryInstallationGenericRepository repository;
+	private final PlanetaryInstallationRepository repository;
 
 	public PlanetaryInstallation getPlanetaryInstallation(int id) {
 		return repository.get(id);

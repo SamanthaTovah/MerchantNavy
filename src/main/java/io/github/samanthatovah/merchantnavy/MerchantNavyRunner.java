@@ -27,15 +27,23 @@ public class MerchantNavyRunner implements CommandLineRunner {
 	private final RaceService raceService;
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) {
 		GenericRepository.GAME_ID = gameService.getGame().id();
 		log.info("Set GAME_ID to {}", GenericRepository.GAME_ID);
 
-		// TODO assess the game state
+		// TODO find all fleets
 
-		// TODO plan moves
+		// TODO loop through all Merchant Navy fleets without orders
 
-		// TODO save moves to DB - including updating import/export demands
+		// TODO if they have cargo or don't have full fuel, log error?
+
+		// TODO for each fleet, see if there's an inter-system job to do in their system
+
+		// TODO if not, see if there is an intra-system job with export in their system
+
+		// TODO if not, see if there is an intra-system job with import in their system
+
+		// TODO if not, either wait, or see intra-system without import or export in this system?
 
 		// exit
 		System.exit(0);
