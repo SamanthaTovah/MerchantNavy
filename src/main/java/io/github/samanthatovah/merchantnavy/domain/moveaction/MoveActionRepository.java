@@ -19,7 +19,7 @@ public class MoveActionRepository extends GenericRepository<MoveAction> {
 	}
 
 	public MoveAction get(int id) {
-		String query = "SELECT * FROM DIM_MoveAction WHERE MoveActionID = " + id + ";";
+		String query = "SELECT * FROM DIM_MoveAction WHERE MoveActionID = %d;".formatted(id);
 		return getOneFromQuery(query);
 	}
 }

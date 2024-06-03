@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RaceGenericRepository extends GenericRepository<Race> {
+public class RaceRepository extends GenericRepository<Race> {
 
-	public RaceGenericRepository(DatabaseService databaseService, RaceParser parser) {
+	public RaceRepository(DatabaseService databaseService, RaceParser parser) {
 		super(databaseService, parser);
 	}
 
 	public List<Race> getAll() {
-		String query = "SELECT * FROM FCT_Race WHERE GameId = " + GAME_ID + ";";
+		String query = "SELECT * FROM FCT_Race WHERE GameId = %d;".formatted(GAME_ID);
 		return getAllFromQuery(query);
 	}
 
 	public Race getPlayerRace() {
-		String query = "SELECT * FROM FCT_Race WHERE GameId = " + GAME_ID + " AND NPR = 0";
+		String query = "SELECT * FROM FCT_Race WHERE GameId = %d AND NPR = 0".formatted(GAME_ID);
 		return getOneFromQuery(query);
 	}
 }

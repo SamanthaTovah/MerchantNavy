@@ -19,7 +19,7 @@ public class PlanetaryInstallationRepository extends GenericRepository<Planetary
 	}
 
 	public PlanetaryInstallation get(int id) {
-		String query = "SELECT * FROM DIM_PlanetaryInstallation WHERE PlanetaryInstallationID = " + id + ";";
+		String query = "SELECT * FROM DIM_PlanetaryInstallation WHERE PlanetaryInstallationID = %d;".formatted(id);
 		return getOneFromQuery(query);
 	}
 }

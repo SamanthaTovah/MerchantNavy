@@ -14,12 +14,14 @@ public class PopulationRepository extends GenericRepository<Population> {
 	}
 
 	public List<Population> getAll() {
-		String query = "SELECT * FROM FCT_Population WHERE GameID = " + GAME_ID + ";";
+		String query = "SELECT * FROM FCT_Population WHERE GameID = %d AND RaceID = %d;"
+				.formatted(GAME_ID, RACE_ID);
 		return getAllFromQuery(query);
 	}
 
 	public Population get(int id) {
-		String query = "SELECT * FROM FCT_Population WHERE GameID = " + GAME_ID + " AND PopulationID = " + id + ";";
+		String query = "SELECT * FROM FCT_Population WHERE GameID = %d AND RaceID = %d AND PopulationID = %d;"
+				.formatted(GAME_ID, RACE_ID, id);
 		return getOneFromQuery(query);
 	}
 }

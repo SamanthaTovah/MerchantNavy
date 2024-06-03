@@ -14,12 +14,14 @@ public class FleetRepository extends GenericRepository<Fleet> {
 	}
 
 	public List<Fleet> getAll() {
-		String query = "SELECT * FROM FCT_Fleet WHERE GameID = " + GAME_ID + ";";
+		String query = "SELECT * FROM FCT_Fleet WHERE GameID = %d AND RaceID = %d;"
+				.formatted(GAME_ID, RACE_ID);
 		return getAllFromQuery(query);
 	}
 
 	public Fleet get(int id) {
-		String query = "SELECT * FROM FCT_Fleet WHERE GameID = " + GAME_ID + " AND FleetID = " + id + ";";
+		String query = "SELECT * FROM FCT_Fleet WHERE GameID = %d AND AND RaceID = %d AND FleetID = %d;"
+				.formatted(GAME_ID, RACE_ID, id);
 		return getOneFromQuery(query);
 	}
 }

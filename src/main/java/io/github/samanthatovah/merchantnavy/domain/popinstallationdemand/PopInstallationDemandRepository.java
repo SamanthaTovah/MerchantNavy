@@ -14,7 +14,7 @@ public class PopInstallationDemandRepository extends GenericRepository<PopInstal
 	}
 
 	public List<PopInstallationDemand> getAll() {
-		String query = "SELECT * FROM FCT_PopInstallationDemand WHERE GameID = " + GAME_ID + ";";
+		String query = "SELECT * FROM FCT_PopInstallationDemand WHERE GameID = %d;".formatted(GAME_ID);
 		return getAllFromQuery(query);
 	}
 }

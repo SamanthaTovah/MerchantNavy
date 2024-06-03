@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RaceService {
 
-	private final RaceGenericRepository repository;
+	private final RaceRepository repository;
 
 	public Race getPlayerRace() {
 		return repository.getPlayerRace();

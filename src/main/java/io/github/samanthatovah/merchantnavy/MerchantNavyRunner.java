@@ -30,6 +30,8 @@ public class MerchantNavyRunner implements CommandLineRunner {
 	public void run(String... args) {
 		GenericRepository.GAME_ID = gameService.getGame().id();
 		log.info("Set GAME_ID to {}", GenericRepository.GAME_ID);
+		GenericRepository.RACE_ID = raceService.getPlayerRace().id();
+		log.info("Set RACE_ID to {}", GenericRepository.RACE_ID);
 
 		// TODO find all fleets
 

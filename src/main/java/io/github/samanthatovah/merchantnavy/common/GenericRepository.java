@@ -9,7 +9,11 @@ import java.util.List;
 
 public abstract class GenericRepository<T> {
 
-	public static int GAME_ID = 114; // for testing
+	/*
+	default values are for integration tests only
+	 */
+	public static int GAME_ID = 114;
+	public static int RACE_ID = 584;
 
 	private final DatabaseService databaseService;
 	private final ResultSetParser<T> parser;
