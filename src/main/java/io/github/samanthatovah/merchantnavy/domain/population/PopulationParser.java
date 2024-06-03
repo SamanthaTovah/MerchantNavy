@@ -23,7 +23,7 @@ public class PopulationParser implements ResultSetParser<Population> {
 					resultSet.getInt("SystemID"),
 					resultSet.getInt("SystemBodyID"),
 					resultSet.getString("PopName"),
-					Population.PopulationDestination.fromInt(resultSet.getInt("ColonistDestination")),
+					Population.ColonistDestination.fromInt(resultSet.getInt("ColonistDestination")),
 					resultSet.getFloat("UnrestPoints")
 			);
 			populations.add(population);

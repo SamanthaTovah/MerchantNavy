@@ -8,13 +8,13 @@ public record Population(
 		int systemId,
 		int systemBodyId,
 		String name,
-		PopulationDestination colonistDestination,
+		ColonistDestination colonistDestination,
 		float unrestPoints
 ) {
-	enum PopulationDestination {
+	enum ColonistDestination {
 		DESTINATION, SOURCE, STABLE;
 
-		static PopulationDestination fromInt(int intRaw) {
+		static ColonistDestination fromInt(int intRaw) {
 			return switch (intRaw) {
 				case 0 -> DESTINATION;
 				case 1 -> SOURCE;
