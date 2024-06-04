@@ -20,4 +20,10 @@ public class PopulationService {
 	public Population getPopulation(int id) {
 		return repository.get(id);
 	}
+
+	public boolean isInSameSystem(int populationIdA, int populationIdB) {
+		int systemIdA = repository.get(populationIdA).systemBodyId();
+		int systemIdB = repository.get(populationIdB).systemId();
+		return systemIdA == systemIdB;
+	}
 }

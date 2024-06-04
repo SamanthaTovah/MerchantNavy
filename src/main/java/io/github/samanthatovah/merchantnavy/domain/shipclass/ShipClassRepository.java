@@ -21,7 +21,7 @@ public class ShipClassRepository extends GenericRepository<ShipClass> {
 	}
 
 	public ShipClass get(int id) {
-		String query = "SELECT * FROM FCT_ShipClass WHERE GameID = %d AND RaceID = %d AMD ShipClassID = %d;"
+		String query = "SELECT * FROM FCT_ShipClass WHERE GameID = %d AND RaceID = %d AND ShipClassID = %d;"
 				.formatted(GAME_ID, RACE_ID, id);
 		return getOneFromQuery(query);
 	}

@@ -20,4 +20,10 @@ public class MoveOrderService {
 	public MoveOrder getMoveOrder(int id) {
 		return repository.get(id);
 	}
+
+	public List<MoveOrder> getFleetOrders(int id) {
+		return getAll().stream()
+				.filter(mo -> mo.fleetId() == id)
+				.toList();
+	}
 }
