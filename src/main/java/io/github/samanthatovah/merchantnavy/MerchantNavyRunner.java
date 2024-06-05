@@ -51,6 +51,10 @@ public class MerchantNavyRunner implements CommandLineRunner {
 		for (Fleet fleet : waitingFleets) {
 			try {
 				TransportSchedule transportSchedule = transportScheduleService.planFleet(fleet);
+				// TODO track predicted changes to installation demand, so multiple fleets don't get assigned the same order
+				// TODO track predicted changes to reduce import and demand (database change)
+				// TODO track predicted reduction in import and demand, so if the fleet fails the import and demand increase again
+				// TODO send transport schedule to game (database change)
 			} catch (TransportScheduleException e) {
 				log.error(e.toString());
 			}

@@ -24,4 +24,10 @@ public class ShipRepository extends GenericRepository<Ship> {
 				.formatted(GAME_ID, RACE_ID, id);
 		return getOneFromQuery(query);
 	}
+
+	public List<Ship> getByFleetId(int fleetId) {
+		String query = "SELECT * FROM FCT_Ship WHERE GameID = %d AND RaceID = %d AND FleetID = %d;"
+				.formatted(GAME_ID, RACE_ID, fleetId);
+		return getAllFromQuery(query);
+	}
 }
