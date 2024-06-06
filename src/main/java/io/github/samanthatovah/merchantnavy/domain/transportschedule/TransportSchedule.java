@@ -6,7 +6,7 @@ import io.github.samanthatovah.merchantnavy.domain.population.Population;
 
 public record TransportSchedule(
 		PlanetaryInstallation cargo,
-		float cargoAmount,
+		double cargoAmount,
 		Population exportPopulation,
 		Population importPopulation,
 		Fleet fleet

@@ -26,11 +26,11 @@ public class TransportScheduleService {
 	private final FleetService fleetService;
 	private final MoveOrderService moveOrderService;
 
-	public TransportSchedule planFleet(Fleet fleet) throws TransportScheduleException {
+	public TransportSchedule planTransportScheduleForFleet(Fleet fleet) throws TransportScheduleException {
 		if (!fleetService.isFleetEmptyCargo(fleet)) {
 			throw new TransportScheduleException("Merchant Navy fleet \"" + fleet.name() + "\" has no orders but non-empty cargo");
 		}
-		log.info("Merchant Navy fleet waiting for order: {} - {}", fleet.name(), fleet);
+		log.info("Merchant Navy fleet waiting for order: \"{}\" - {}", fleet.name(), fleet);
 		int systemId = fleet.systemId();
 		var demands = popInstallationDemandService.getAll();
 		var imports = demands.stream().filter(d -> !d.export()).toList();
@@ -38,6 +38,8 @@ public class TransportScheduleService {
 
 		// Find a matching import and export in the fleet's system
 		TransportSchedule transportSchedule = getIntraSystemTransportSchedule(fleet, imports, exports, systemId);
+
+		// TODO keep looking if no intra-system schedule found
 
 		return transportSchedule;
 	}
@@ -64,11 +66,11 @@ public class TransportScheduleService {
 				float maxInstallationsCarried = cargoCapacity / installationSize;
 				float installationsCarried = Math.min(matchingDemand, maxInstallationsCarried);
 
-				log.info("{} wants to export {} {}",
+				log.debug("{} wants to export {} {}",
 						populationService.getPopulation(exp.populationId()).name(), exportDemand, installation.name());
-				log.info("{} wants to import {} {}",
+				log.debug("{} wants to import {} {}",
 						populationService.getPopulation(imp.populationId()).name(), importDemand, installation.name());
-				log.info("\"{}\" has a total cargo capacity of {}, and can carry {} {}",
+				log.debug("\"{}\" has a total cargo capacity of {}, and can carry {} {}",
 						fleet.name(), cargoCapacity, maxInstallationsCarried, installation.name());
 				log.info("Creating transport schedule of {} {} from {} to {} within {} for fleet \"{}\"",
 						installationsCarried, installation.name(), exportPopulation.name(), importPopulation.name(), systemId, fleet.name());

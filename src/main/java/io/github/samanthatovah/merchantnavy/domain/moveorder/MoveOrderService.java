@@ -38,23 +38,36 @@ public class MoveOrderService {
 		if (!populationService.isInSameSystem(transportSchedule.importPopulation(), transportSchedule.exportPopulation())) {
 			throw new IllegalStateException("Cannot handle pathing between system yet");
 		}
+		int moveOrder = getNextMoveOrderForFleet(transportSchedule.fleet());
 
 		List<MoveOrder> moveOrders = new ArrayList<>();
 		// TODO either handle not being able to refuel at start location, or enforce it
 		// refuel at export location
-		MoveOrder refuelAtColony = moveOrderFactory.createRefuelOrder(transportSchedule.fleet(), transportSchedule.exportPopulation(), getNextMoveOrderForFleet(transportSchedule.fleet()));
+		MoveOrder refuelAtColony = moveOrderFactory.createRefuelOrder(transportSchedule.fleet(),
+				transportSchedule.exportPopulation(), moveOrder++);
 		moveOrders.add(refuelAtColony);
-		log.info("made \"Refuel at Colony\" MoveOrder: {}", refuelAtColony);
+		log.debug("Made \"Refuel at Colony\" MoveOrder: {}", refuelAtColony);
 
-		// load installations
+		// load installations at export location
+		MoveOrder loadInstallation = moveOrderFactory.createLoadInstallationOrder(transportSchedule.fleet(),
+				transportSchedule.exportPopulation(), transportSchedule.cargo(), transportSchedule.cargoAmount(),
+				moveOrder++);
+		moveOrders.add(loadInstallation);
+		log.debug("Made \"Load Installation\" MoveOrder: {}", loadInstallation);
 
-		// move to import location
+		// unload installations at import location
+		MoveOrder unloadInstallation = moveOrderFactory.createUnloadInstallationOrder(transportSchedule.fleet(),
+				transportSchedule.importPopulation(), transportSchedule.cargo(), transportSchedule.cargoAmount(),
+				moveOrder++);
+		moveOrders.add(unloadInstallation);
+		log.debug("Made \"Unload Installation\" Move Order: {}", unloadInstallation);
 
-		// unload installations
-
-		// TODO reconsider this if needed (will need seperate transport actions and refuel actions)
-		// move to export location
-		log.warn("returning incomplete MoveOrder sequence");
+		// reconsider this if needed (will need seperate transport actions and refuel actions)
+		// refuel back at export location
+		MoveOrder refuelAtColony2 = moveOrderFactory.createRefuelOrder(transportSchedule.fleet(),
+				transportSchedule.exportPopulation(), moveOrder);
+		moveOrders.add(refuelAtColony2);
+		log.debug("Made \"Refuel at Colony\" MoveOrder (return): {}", refuelAtColony2);
 		return moveOrders;
 	}
 

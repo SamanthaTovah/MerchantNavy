@@ -3,6 +3,7 @@ package io.github.samanthatovah.merchantnavy.domain.moveorder;
 import io.github.samanthatovah.merchantnavy.common.GenericRepository;
 import io.github.samanthatovah.merchantnavy.domain.fleet.Fleet;
 import io.github.samanthatovah.merchantnavy.domain.moveaction.MoveActionService;
+import io.github.samanthatovah.merchantnavy.domain.planetaryinstallation.PlanetaryInstallation;
 import io.github.samanthatovah.merchantnavy.domain.population.Population;
 import io.github.samanthatovah.merchantnavy.domain.system.StarSystem;
 import io.github.samanthatovah.merchantnavy.domain.system.StarSystemService;
@@ -22,14 +23,13 @@ public class MoveOrderFactory {
 
 	public MoveOrder createRefuelOrder(Fleet fleet, Population population, int moveOrder) {
 		StarSystem starSystem = starSystemService.getSystem(population.systemId());
-
 		int moveActionId = moveActionService.getIdByDescription("Refuel from Colony");
 		int destinationType = 2;
 		String description = "%s: Refuel from Colony (MerchantNavy)".formatted(population.name());
 		int destinationId = population.systemBodyId();
 
 		return new MoveOrder(
-				null, // with real database this gets added automatically
+				null,
 				GenericRepository.GAME_ID,
 				GenericRepository.RACE_ID,
 				fleet.id(),
@@ -46,6 +46,88 @@ public class MoveOrderFactory {
 				description,
 				null, // this might need to be empty String
 				0f,
+				0,
+				0,
+				0.0,
+				0,
+				0.0,
+				0,
+				0,
+				0,
+				destinationId
+		);
+	}
+
+	public MoveOrder createLoadInstallationOrder(Fleet fleet, Population population, PlanetaryInstallation installation,
+												 double installationAmount, int moveOrder) {
+		StarSystem starSystem = starSystemService.getSystem(population.systemId());
+		int moveActionId = moveActionService.getIdByDescription("Load Installation");
+		int destinationType = 2; // TODO test with other installations
+		int destinationItemType = 2; // TODO test with other installations
+		int destinationItemId = installation.id();
+		String description = "%s: Load Installation - %s x%d (MerchantNavy)"
+				.formatted(population.name(), installation.name(), (int) installationAmount);
+		int destinationId = population.systemBodyId();
+
+		return new MoveOrder(
+				null,
+				GenericRepository.GAME_ID,
+				GenericRepository.RACE_ID,
+				fleet.id(),
+				moveActionId,
+				moveOrder,
+				starSystem.id(),
+				destinationType,
+				population.id(),
+				destinationItemType,
+				destinationItemId,
+				installationAmount,
+				0,
+				0,
+				description,
+				null,
+				0.0,
+				0,
+				0,
+				0.0,
+				0,
+				0.0,
+				0,
+				0,
+				0,
+				destinationId
+		);
+	}
+
+	public MoveOrder createUnloadInstallationOrder(Fleet fleet, Population population, PlanetaryInstallation installation,
+												   double installationAmount, int moveOrder) {
+		StarSystem starSystem = starSystemService.getSystem(population.systemId());
+		int moveActionId = moveActionService.getIdByDescription("Unload Installation");
+		int destinationType = 2; // TODO test with other installations
+		int destinationItemType = 19; // TODO test with other installations
+		int destinationItemId = installation.id();
+		String description = "%s: Unload Installation - %s x%d (MerchantNavy)"
+				.formatted(population.name(), installation.name(), (int) installationAmount);
+		int destinationId = population.systemBodyId();
+
+		return new MoveOrder(
+				null,
+				GenericRepository.GAME_ID,
+				GenericRepository.RACE_ID,
+				fleet.id(),
+				moveActionId,
+				moveOrder,
+				starSystem.id(),
+				destinationType,
+				population.id(),
+				destinationItemType,
+				destinationItemId,
+				installationAmount,
+				0,
+				0,
+				description,
+				null,
+				0.0,
 				0,
 				0,
 				0.0,

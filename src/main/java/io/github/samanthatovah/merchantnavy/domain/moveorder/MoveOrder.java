@@ -17,7 +17,7 @@ public record MoveOrder(
 		int newWarpPointId,
 		String description,
 		String messageText,
-		float minQuantity,
+		double minQuantity,
 		int orderDelay,
 		int orbDistance,
 		double minDistance,
