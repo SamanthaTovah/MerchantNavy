@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SystemRepository extends GenericRepository<System> {
+public class StarSystemRepository extends GenericRepository<StarSystem> {
 
-	public SystemRepository(DatabaseService databaseService, SystemParser parser) {
+	public StarSystemRepository(DatabaseService databaseService, StarSystemParser parser) {
 		super(databaseService, parser);
 	}
 
-	public List<System> getAll() {
+	public List<StarSystem> getAll() {
 		String query = "SELECT * FROM FCT_System WHERE GameID = %d;"
 				.formatted(GAME_ID);
 		return getAllFromQuery(query);
 	}
 
-	public System get(int id) {
+	public StarSystem get(int id) {
 		String query = "SELECT * FROM FCT_System WHERe GameID = %d AND SystemID = %d;"
 				.formatted(GAME_ID, id);
 		return getOneFromQuery(query);

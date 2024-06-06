@@ -9,15 +9,15 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 @Service
-public class SystemService {
+public class StarSystemService {
 
-	private final SystemRepository repository;
+	private final StarSystemRepository repository;
 
-	public List<System> getAll() {
+	public List<StarSystem> getAll() {
 		return repository.getAll();
 	}
 
-	public System getSystem(int id) {
+	public StarSystem getSystem(int id) {
 		return repository.get(id);
 	}
 }

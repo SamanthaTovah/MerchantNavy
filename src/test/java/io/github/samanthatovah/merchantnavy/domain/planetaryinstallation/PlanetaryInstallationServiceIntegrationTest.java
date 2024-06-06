@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log4j2
@@ -30,6 +32,14 @@ class PlanetaryInstallationServiceIntegrationTest {
 		assertEquals(2500, lowGravityInfrastructure.cargoPoints());
 
 		log.info("fuel refinery: {}", fuelRefinery);
+	}
+
+	@Test
+	void getAll() {
+		List<PlanetaryInstallation> planetaryInstallations = planetaryInstallationService.getAll();
+		for (PlanetaryInstallation planetaryInstallation : planetaryInstallations) {
+			log.info("Planetary Installation: {}", planetaryInstallation);
+		}
 	}
 
 }

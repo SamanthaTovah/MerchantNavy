@@ -22,8 +22,12 @@ public class PopulationService {
 	}
 
 	public boolean isInSameSystem(int populationIdA, int populationIdB) {
-		int systemIdA = repository.get(populationIdA).systemBodyId();
+		int systemIdA = repository.get(populationIdA).systemId();
 		int systemIdB = repository.get(populationIdB).systemId();
 		return systemIdA == systemIdB;
+	}
+
+	public boolean isInSameSystem(Population populationA, Population populationB) {
+		return populationA.systemId() == populationB.systemId();
 	}
 }

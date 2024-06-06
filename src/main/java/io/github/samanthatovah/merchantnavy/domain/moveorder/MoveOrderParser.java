@@ -32,7 +32,15 @@ public class MoveOrderParser implements ResultSetParser<MoveOrder> {
 					resultSet.getInt("NewWarpPointID"),
 					resultSet.getString("Description"),
 					resultSet.getString("MessageText"),
-					resultSet.getFloat("MinQuantity")
+					resultSet.getFloat("MinQuantity"),
+					resultSet.getInt("OrderDelay"),
+					resultSet.getInt("OrbDistance"),
+					resultSet.getDouble("MinDistance"),
+					resultSet.getInt("Arrived"),
+					resultSet.getInt("SurveyPointsRequired"),
+					resultSet.getInt("TimeRequired"),
+					resultSet.getInt("LoadSubUnits"),
+					resultSet.getInt("OrderDelayRemaining")
 			);
 			moveOrders.add(moveOrder);
 		}

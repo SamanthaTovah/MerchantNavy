@@ -39,4 +39,8 @@ public abstract class GenericRepository<T> {
 		return list.get(0);
 	}
 
+	protected int saveFromQuery(String query) {
+		return databaseService.executeUpdate(query, true);
+	}
+
 }

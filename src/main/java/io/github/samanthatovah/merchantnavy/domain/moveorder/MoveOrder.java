@@ -1,7 +1,7 @@
 package io.github.samanthatovah.merchantnavy.domain.moveorder;
 
 public record MoveOrder(
-		int id,
+		Integer id, // null only to put in DataBase (autoincrement)
 		int gameId,
 		int raceId,
 		int fleetId,
@@ -12,11 +12,19 @@ public record MoveOrder(
 		int populationId,
 		int destinationItemType,
 		int destinationItemId,
-		float maxItems,
+		double maxItems,
 		int newSystemId,
 		int newWarpPointId,
 		String description,
 		String messageText,
-		float minQuantity
+		float minQuantity,
+		int orderDelay,
+		int orbDistance,
+		double minDistance,
+		int arrived,
+		double surveyPointsRequired,
+		int timeRequired,
+		int loadSubUnits,
+		int orderDelayRemaining
 ) {
 }

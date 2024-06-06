@@ -1,4 +1,4 @@
-package io.github.samanthatovah.merchantnavy.domain.system;
+package io.github.samanthatovah.merchantnavy.domain.systembody;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -11,16 +11,16 @@ import java.util.List;
 @Log4j2
 @SpringBootTest
 @ActiveProfiles("test")
-class SystemServiceIntegrationTest {
+class StarSystemBodyServiceIntegrationTest {
 
 	@Autowired
-	SystemService systemService;
+	private SystemBodyService systemBodyService;
 
 	@Test
 	void getAll() {
-		List<System> systems = systemService.getAll();
-		for (System system : systems) {
-			log.info("System: {}", system);
+		List<SystemBody> systemBodies = systemBodyService.getAll();
+		for (SystemBody systemBody : systemBodies) {
+			log.info("System Body: {}", systemBody);
 		}
 	}
 

@@ -35,4 +35,24 @@ public class DatabaseService {
 			throw new DatabaseException(e);
 		}
 	}
+
+	public int executeUpdate(String query, boolean returnGeneratedKeys) {
+		log.info("query made is: {}", query);
+		try (Statement statement = connection.createStatement()) {
+			if (returnGeneratedKeys) {
+				statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+				try (ResultSet rs = statement.getGeneratedKeys()) {
+					if (rs.next()) {
+						return rs.getInt(1); // Assuming a single generated key
+					}
+				}
+			} else {
+				return statement.executeUpdate(query);
+			}
+		} catch (SQLException e) {
+			throw new DatabaseException(e);
+		}
+		return -1; // Return -1 if no keys were generated
+	}
+
 }

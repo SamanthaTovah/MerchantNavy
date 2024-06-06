@@ -9,21 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SystemParser implements ResultSetParser<System> {
+public class StarSystemParser implements ResultSetParser<StarSystem> {
 
 	@Override
-	public List<System> parse(ResultSet resultSet) throws SQLException {
-		List<System> systems = new ArrayList<>();
+	public List<StarSystem> parse(ResultSet resultSet) throws SQLException {
+		List<StarSystem> starSystems = new ArrayList<>();
 		while (resultSet.next()) {
-			System system = new System(
+			StarSystem starSystem = new StarSystem(
 					resultSet.getInt("SystemID"),
 					resultSet.getInt("SystemNumber"),
 					resultSet.getInt("Stars"),
 					resultSet.getInt("GameID"),
 					resultSet.getBoolean("SolSystem")
 			);
-			systems.add(system);
+			starSystems.add(starSystem);
 		}
-		return systems;
+		return starSystems;
 	}
 }

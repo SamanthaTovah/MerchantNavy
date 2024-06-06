@@ -20,4 +20,8 @@ public class MoveActionService {
 	public MoveAction getMoveAction(int id) {
 		return repository.get(id);
 	}
+
+	public int getIdByDescription(String description) {
+		return repository.getByDescription(description).id();
+	}
 }
