@@ -6,6 +6,7 @@ import io.github.samanthatovah.merchantnavy.domain.moveaction.MoveActionService;
 import io.github.samanthatovah.merchantnavy.domain.population.Population;
 import io.github.samanthatovah.merchantnavy.domain.system.StarSystem;
 import io.github.samanthatovah.merchantnavy.domain.system.StarSystemService;
+import io.github.samanthatovah.merchantnavy.domain.systembody.SystemBodyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class MoveOrderFactory {
 
 	private final MoveActionService moveActionService;
 	private final StarSystemService starSystemService;
+	private final SystemBodyService systemBodyService;
 
 	public MoveOrder createRefuelOrder(Fleet fleet, Population population, int moveOrder) {
 		StarSystem starSystem = starSystemService.getSystem(population.systemId());
@@ -24,6 +26,7 @@ public class MoveOrderFactory {
 		int moveActionId = moveActionService.getIdByDescription("Refuel from Colony");
 		int destinationType = 2;
 		String description = "%s: Refuel from Colony (MerchantNavy)".formatted(population.name());
+		int destinationId = population.systemBodyId();
 
 		return new MoveOrder(
 				null, // with real database this gets added automatically
@@ -50,7 +53,8 @@ public class MoveOrderFactory {
 				0.0,
 				0,
 				0,
-				0
+				0,
+				destinationId
 		);
 	}
 }

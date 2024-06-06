@@ -40,8 +40,8 @@ public class MoveOrderParser implements ResultSetParser<MoveOrder> {
 					resultSet.getInt("SurveyPointsRequired"),
 					resultSet.getInt("TimeRequired"),
 					resultSet.getInt("LoadSubUnits"),
-					resultSet.getInt("OrderDelayRemaining")
-			);
+					resultSet.getInt("OrderDelayRemaining"),
+					resultSet.getInt("DestinationID"));
 			moveOrders.add(moveOrder);
 		}
 		return moveOrders;

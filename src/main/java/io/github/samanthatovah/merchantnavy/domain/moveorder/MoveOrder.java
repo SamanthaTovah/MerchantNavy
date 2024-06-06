@@ -25,6 +25,7 @@ public record MoveOrder(
 		double surveyPointsRequired,
 		int timeRequired,
 		int loadSubUnits,
-		int orderDelayRemaining
+		int orderDelayRemaining,
+		int destinationId
 ) {
 }

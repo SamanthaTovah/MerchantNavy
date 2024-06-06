@@ -40,8 +40,8 @@ public class MoveOrderRepository extends GenericRepository<MoveOrder> {
 						"GameID, RaceID, FleetID, MoveActionID, MoveOrder, StartSystemID, DestinationType, " +
 						"PopulationID, DestinationItemType, DestinationItemID, MaxItems, NewSystemID, " +
 						"NewWarpPointID, Description, MessageText, MinQuantity, OrderDelay, OrbDistance, MinDistance, " +
-						"Arrived, SurveyPointsRequired, TimeRequired, LoadSubUnits, OrderDelayRemaining" +
-						") VALUES (%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %.2f, %d, %d, '%s', %s, %.2f, %d, %d, %.2f, %d, %.2f, %d, %d, %d)",
+						"Arrived, SurveyPointsRequired, TimeRequired, LoadSubUnits, OrderDelayRemaining, DestinationID" +
+						") VALUES (%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %.2f, %d, %d, '%s', %s, %.2f, %d, %d, %.2f, %d, %.2f, %d, %d, %d, %d)",
 				moveOrder.gameId(), moveOrder.raceId(), moveOrder.fleetId(), moveOrder.moveActionId(),
 				moveOrder.moveOrder(), moveOrder.startSystemId(), moveOrder.destinationType(),
 				moveOrder.populationId(), moveOrder.destinationItemType(), moveOrder.destinationItemId(),
@@ -49,7 +49,7 @@ public class MoveOrderRepository extends GenericRepository<MoveOrder> {
 				moveOrder.description(), messageText, moveOrder.minQuantity(),
 				moveOrder.orderDelay(), moveOrder.orbDistance(), moveOrder.minDistance(),
 				moveOrder.arrived(), moveOrder.surveyPointsRequired(), moveOrder.timeRequired(),
-				moveOrder.loadSubUnits(), moveOrder.orderDelayRemaining()
+				moveOrder.loadSubUnits(), moveOrder.orderDelayRemaining(), moveOrder.destinationId()
 		);
 
 		saveFromQuery(query);
